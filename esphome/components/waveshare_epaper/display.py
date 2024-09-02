@@ -18,7 +18,7 @@ DEPENDENCIES = ["spi"]
 
 waveshare_epaper_ns = cg.esphome_ns.namespace("waveshare_epaper")
 WaveshareEPaper = waveshare_epaper_ns.class_(
-    "WaveshareEPaper", cg.PollingComponent, spi.SPIDevice, display.DisplayBuffer
+    "WaveshareEPaper", cg.PollingComponent, spi.SPIDevice
 )
 WaveshareEPaperTypeA = waveshare_epaper_ns.class_(
     "WaveshareEPaperTypeA", WaveshareEPaper
@@ -140,7 +140,6 @@ async def to_code(config):
     else:
         raise NotImplementedError()
 
-    await cg.register_component(var, config)
     await display.register_display(var, config)
     await spi.register_spi_device(var, config)
 
