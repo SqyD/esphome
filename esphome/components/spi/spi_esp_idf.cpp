@@ -218,7 +218,7 @@ class SPIBusHw : public SPIBus {
       buscfg.flags |= SPICOMMON_BUSFLAG_QUAD;
     }
     buscfg.max_transfer_sz = MAX_TRANSFER_SIZE;
-    auto err = spi_bus_initialize(channel, &buscfg, SPI_DMA_CH_AUTO);
+    auto err = spi_bus_initialize(channel, &buscfg, 2); //Hardcoding to DMA 2 instead of SPI_DMA_CH_AUTO
     if (err != ESP_OK)
       ESP_LOGE(TAG, "Bus init failed - err %X", err);
   }
